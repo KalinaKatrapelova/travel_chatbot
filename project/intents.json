@@ -1,0 +1,192 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": [
+        "Hi", "Hello", "Hey there", "Good morning", "Good evening",
+        "How are you", "Is anyone there?", "Hi there", "Hello there"
+      ],
+      "responses": [
+        "Hello! I'm your travel assistant. I can help you explore Paris, London, or Tokyo!",
+        "Hi there! Ready to plan your trip to Paris, London, or Tokyo?",
+        "Welcome! Let me help you discover Paris, London, or Tokyo!"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": [
+        "Bye", "See you later", "Goodbye", "Thanks bye", "Have a good day",
+        "See ya", "Take care", "Bye bye"
+      ],
+      "responses": [
+        "Goodbye! Have a fantastic trip!",
+        "Safe travels! Feel free to ask for more travel tips anytime!",
+        "Bye! Hope you have an amazing journey!"
+      ]
+    },
+    {
+      "tag": "paris_general",
+      "patterns": [
+        "Tell me about Paris", "What is Paris like", "Paris information",
+        "Describe Paris", "Paris overview", "About Paris"
+      ],
+      "responses": [
+        "Paris, the City of Light, is France's elegant capital known for its art, \ncuisine, and romantic atmosphere. \nThe city seamlessly blends historic architecture with modern culture.",
+        "Paris is a timeless city that captures hearts with its charming cafes, \nworld-class museums, and iconic Eiffel Tower, \nmaking it one of Europe's most visited destinations."
+      ]
+    },
+    {
+      "tag": "london_general",
+      "patterns": [
+        "Tell me about London", "What is London like", "London information",
+        "Describe London", "London overview", "About London"
+      ],
+      "responses": [
+        "London, the UK's dynamic capital, is a city where historic traditions meet modern innovation. \nIt's a global hub of culture, finance, and entertainment.",
+        "London offers a perfect blend of history and contemporary life, \nfrom royal palaces to diverse neighborhoods, making it a uniquely exciting destination."
+      ]
+    },
+    {
+      "tag": "tokyo_general",
+      "patterns": [
+        "Tell me about Tokyo", "What is Tokyo like", "Tokyo information",
+        "Describe Tokyo", "Tokyo overview", "About Tokyo"
+      ],
+      "responses": [
+        "Tokyo is Japan's ultramodern capital where ancient traditions harmoniousl\nblend with cutting-edge technology. \nIt's a city of contrasts and endless discoveries.",
+        "Tokyo seamlessly combines traditional Japanese culture with futuristic innovation, \noffering visitors an unforgettable mix of old and new Japan."
+      ]
+    },
+    {
+      "tag": "paris_landmarks",
+      "patterns": [
+        "What can I see in Paris", "Paris attractions", "Paris landmarks",
+        "What to visit in Paris", "Tourist spots in Paris", "Paris monuments",
+        "Places to see in Paris", "Paris sightseeing"
+      ],
+      "responses": [
+        "Here are some must-see landmarks in Paris:\n* Eiffel Tower - Visit at sunset for the best views\n* Notre-Dame Cathedral - Historic Gothic masterpiece\n* Louvre Museum - Home to the Mona Lisa",
+        "Check out these Paris highlights:\n* Arc de Triomphe - Iconic monument with city views\n* Sacré-Cœur - Beautiful basilica in Montmartre\n* Palace of Versailles - Royal château and gardens",
+        "Don't miss these Paris attractions:\n* Musée d'Orsay - Impressionist art in former train station\n* Seine River - Take a scenic river cruise\n* Luxembourg Gardens - Perfect for a peaceful break"
+      ]
+    },
+    {
+      "tag": "paris_food",
+      "patterns": [
+        "What to eat in Paris", "Paris food recommendations", "French cuisine",
+        "Best restaurants Paris", "Traditional French food", "Paris dining"
+      ],
+      "responses": [
+        "Essential Paris food experiences:\n* Fresh croissants from local boulangeries\n* Classic beef bourguignon in bistros\n* French cheese and wine tasting",
+        "Try these Paris culinary delights:\n* Traditional coq au vin\n* Fresh baguettes and pastries\n* Authentic French crêpes",
+        "Must-try Paris foods:\n* French onion soup\n* Escargots in garlic butter\n* Macarons from patisseries"
+      ]
+    },
+    {
+     "tag": "paris_weather",
+      "patterns": [
+      "Weather in Paris", "Paris climate", "When to visit Paris",
+      "Best time Paris", "Paris seasons", "Paris temperature"
+    ],
+      "responses": [
+        "Paris weather overview:\n* Spring (March-May): Mild 8-19°C, perfect for sightseeing\n* Summer (June-August): Warm 15-25°C, busy season\n* Fall (September-November): Cool 11-21°C, fewer tourists",
+        "Best times to visit Paris:\n* Spring for blooming gardens and mild weather\n* Fall for fewer crowds and pleasant temperatures\n* Winter for festive atmosphere and shorter lines",
+        "Paris seasonal highlights:\n* April-May for perfect walking weather\n* September-October for harvest season and wine\n* December for holiday decorations and markets"
+      ]
+    },
+    {
+      "tag": "london_landmarks",
+      "patterns": [
+        "What can I see in London", "London attractions", "London landmarks",
+        "What to visit in London", "Tourist spots in London", "London monuments"
+      ],
+      "responses": [
+        "Top London landmarks to visit:\n* Big Ben and Houses of Parliament\n* Tower of London - Home to Crown Jewels\n* Buckingham Palace - Royal residence",
+        "Must-see London attractions:\n* Westminster Abbey - Historic coronation site\n* Tower Bridge - Iconic river crossing\n* British Museum - World treasures",
+        "Popular London sites:\n* London Eye - Best city views\n* St. Paul's Cathedral - Stunning architecture\n* Hyde Park - Royal gardens"
+      ]
+    },
+    {
+      "tag": "london_food",
+      "patterns": [
+        "What to eat in London", "London food recommendations", "British cuisine",
+        "Best restaurants London", "Traditional British food", "London dining"
+      ],
+      "responses": [
+        "Classic London food experiences:\n* Fish and chips at local shops\n* Traditional afternoon tea\n* Sunday roast at historic pubs",
+        "Try these London favorites:\n* Full English breakfast\n* Curry on Brick Lane\n* Borough Market food stalls",
+        "London food highlights:\n* Traditional meat pies\n* Fresh oysters at seafood bars\n* Street food at Camden Market"
+      ]
+    },
+    {
+      "tag": "london_weather",
+      "patterns": [
+        "Weather in London", "London climate", "When to visit London",
+        "Best time London", "London seasons", "London temperature"
+      ],
+      "responses": [
+        "London weather highlights:\n* Spring (March-May): Mild 8-15°C with blooming parks\n* Summer (June-August): Pleasant 18-23°C, peak season\n* Fall (September-November): Cool 11-17°C, beautiful colors",
+        "Best times for London:\n* May-June for warm days and less rain\n* September for cultural events and good weather\n* December for festive celebrations",
+        "London weather tips:\n* Pack a light raincoat - weather changes quickly\n* Visit indoor attractions in winter months\n* Summer has longest daylight hours"
+      ]
+    },
+    {
+      "tag": "tokyo_landmarks",
+      "patterns": [
+        "What can I see in Tokyo", "Tokyo attractions", "Tokyo landmarks",
+        "What to visit in Tokyo", "Tourist spots in Tokyo", "Tokyo monuments"
+      ],
+      "responses": [
+        "Essential Tokyo landmarks:\n* Sensō-ji Temple - Oldest Buddhist temple\n* Tokyo Skytree - Amazing city views\n* Meiji Shrine - Peaceful forest setting",
+        "Popular Tokyo spots:\n* Shibuya Crossing - World's busiest crossing\n* Imperial Palace - Emperor's residence\n* Ueno Park - Museums and gardens",
+        "Must-visit Tokyo areas:\n* Akihabara - Electronics and anime\n* Harajuku - Fashion and culture\n* Tsukiji Outer Market - Famous fish market"
+      ]
+    },
+    {
+      "tag": "tokyo_food",
+      "patterns": [
+        "What to eat in Tokyo", "Tokyo food recommendations", "Japanese cuisine",
+        "Best restaurants Tokyo", "Traditional Japanese food", "Tokyo dining"
+      ],
+      "responses": [
+        "Must-try Tokyo foods:\n* Fresh sushi at Tsukiji Market\n* Ramen from local shops\n* Yakitori at izakayas",
+        "Tokyo food experiences:\n* Traditional tempura\n* Udon noodle bowls\n* Japanese street food",
+        "Popular Tokyo dishes:\n* Authentic tonkatsu\n* Fresh sashimi\n* Matcha desserts"
+      ]
+    },
+        {
+      "tag": "tokyo_weather",
+      "patterns": [
+        "Weather in Tokyo", "Tokyo climate", "When to visit Tokyo",
+        "Best time Tokyo", "Tokyo seasons", "Tokyo temperature"
+      ],
+      "responses": [
+        "Tokyo seasonal guide:\n* Spring (March-May): Mild 10-19°C, cherry blossoms\n* Fall (September-November): Pleasant 12-23°C, autumn colors\n* Winter (December-February): Cool 2-12°C, clear skies",
+        "Best times for Tokyo:\n* Late March for cherry blossom season\n* October-November for comfortable temperatures\n* January-February for fewer tourists",
+        "Tokyo weather tips:\n* Avoid rainy season (June-July)\n* Spring and fall are most comfortable\n* Summer can be very humid"
+      ]
+    },
+    {
+      "tag": "general_transportation",
+      "patterns": [
+        "How to get around", "Public transport", "Transportation options",
+        "Best way to travel", "Metro system", "Local transport"
+      ],
+      "responses": [
+        "Transportation tips:\n* Get a multi-day transit pass\n* Download local transport apps\n* Use metro for speed and efficiency",
+        "Getting around advice:\n* Take buses for scenic routes\n* Walk in city centers\n* Use taxis late at night"
+      ]
+    },
+    {
+      "tag": "travel_costs",
+      "patterns": [
+        "How much money needed", "Travel expenses", "Budget advice",
+        "Cost of visiting", "Price information", "Travel budget"
+      ],
+      "responses": [
+        "Daily budget guidelines:\n* Budget: $70-100 (hostels, street food)\n* Mid-range: $150-200 (hotels, restaurants)\n* Luxury: $300+ (high-end accommodations)",
+        "Money-saving tips:\n* Book accommodations early\n* Use public transportation\n* Get city attraction passes"
+      ]
+    }
+  ]
+}

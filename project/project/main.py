@@ -3,6 +3,8 @@ import json
 import random
 import numpy as np
 import os
+import sys
+import io
 from model import EnhancedNeuralNet
 from nltk_utils import tokenize, get_sentence_embedding, correct_spelling, extract_entities, load_embeddings
 
@@ -22,7 +24,7 @@ class EnhancedChatBot:
 
         # Load the intents
         try:
-            with open(intents_file, 'r') as f:
+            with open(intents_file, 'r', encoding='utf-8') as f:
                 self.intents = json.load(f)
         except json.JSONDecodeError:
             raise ValueError(f"Invalid JSON format in '{intents_file}'.")
@@ -31,7 +33,7 @@ class EnhancedChatBot:
 
         # Load the trained model data
         try:
-            with open(model_data, 'r') as f:
+            with open(model_data, 'r', encoding='utf-8') as f:
                 model_data = json.load(f)
         except json.JSONDecodeError:
             raise ValueError(f"Invalid JSON format in '{model_data}'.")
@@ -96,6 +98,8 @@ class EnhancedChatBot:
 
         return corrected_tokens, entities
 
+    # Modify the get_response method in EnhancedChatBot class
+
     def get_response(self, user_input):
         """
         Get a response to the user input.
@@ -105,6 +109,32 @@ class EnhancedChatBot:
         """
         # Preprocess the input
         tokens, entities = self.preprocess_input(user_input)
+
+        # Check if this is a follow-up question about the same context
+        is_followup = False
+        current_context = None
+
+        # Common follow-up phrases that don't mention the city
+        followup_phrases = [
+            "what about", "tell me about", "how about", "and", "what's", "how's",
+            "any tips", "more info", "more information", "more about"
+        ]
+
+        # Check if this is likely a follow-up question
+        lower_input = user_input.lower()
+        for phrase in followup_phrases:
+            if phrase in lower_input:
+                is_followup = True
+                break
+
+        # If we have locations in context and this seems like a follow-up
+        if is_followup and self.context['entities']['locations']:
+            current_context = self.context['entities']['locations'][0]
+        else:
+            # Update context with new entities
+            if entities['locations']:
+                current_context = entities['locations'][0]
+                self.context['current_city'] = current_context
 
         # Convert text directly to embeddings
         input_embedding = get_sentence_embedding(user_input)
@@ -131,13 +161,30 @@ class EnhancedChatBot:
 
         tag = self.tags[predicted_class]
 
+        # If this is a topic-specific tag (like food, weather, etc.)
+        # and we have a city context, try to find a city-specific response
+        if current_context and "_" in tag and tag.split("_")[1] in ["food", "weather", "landmarks", "hidden_gems"]:
+            topic = tag.split("_")[1]
+            city_specific_tag = f"{current_context.lower()}_{topic}"
+
+            # Check if we have a tag for this city and topic
+            if city_specific_tag in self.tags:
+                tag = city_specific_tag
+            elif f"{current_context.lower()}_landmarks" in self.tags and topic != "landmarks":
+                # Fallback to general city tag if we can't find specific topic
+                tag = f"{current_context.lower()}_landmarks"
+
+        # Store the last intent for future reference
+        self.context['last_intent'] = tag
+
         # Retrieve the appropriate response from intents based on predicted tag
         response = self.get_intent_response(tag)
 
         # Add to conversation history
         self.context['conversation_history'].append({
             'user_input': user_input,
-            'response': response
+            'response': response,
+            'tag': tag
         })
 
         return response
@@ -179,6 +226,9 @@ def chat():
     """
     Run an interactive chat session with the travel chatbot.
     """
+    # Set the correct encoding for stdout
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
     print("Starting the TravelBot chatbot...")
 
     try:

@@ -63,8 +63,8 @@ class EnhancedNeuralNet(nn.Module):
         # Output layer
         out = self.l4(out)
 
-        if is_single_sample and out.size(0) == 1:
-            out = out.squeeze(0)  # Remove batch dimension if it was a single sample
+        # if is_single_sample and out.size(0) == 1:
+        #     out = out.squeeze(0)  # Remove batch dimension if it was a single sample
 
         return out
 

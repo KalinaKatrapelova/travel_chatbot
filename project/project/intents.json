@@ -4,39 +4,73 @@
       "tag": "greeting",
       "patterns": [
         "Hi", "Hello", "Hey there", "Good morning", "Good evening",
-        "How are you", "Is anyone there?", "Hi there", "Hello there"
+        "How are you", "Is anyone there?", "Hi there", "Hello there",
+        "Greetings", "What's up", "Hey", "Good day"
       ],
       "responses": [
-        "Hello! I'm your travel assistant. I can help you explore Paris, London, or Tokyo!",
-        "Hi there! Ready to plan your trip to Paris, London, or Tokyo?",
-        "Welcome! Let me help you discover Paris, London, or Tokyo!"
+        "Hello! I'm your travel assistant. I can help you explore Paris, London, Tokyo, New York, Rome, and Barcelona!",
+        "Hi there! Ready to plan your trip to one of our featured cities?",
+        "Welcome! Let me help you discover amazing destinations around the world!",
+        "Greetings, traveler! I can provide information about attractions, food, weather, and local tips for several cities."
       ]
     },
     {
       "tag": "goodbye",
       "patterns": [
         "Bye", "See you later", "Goodbye", "Thanks bye", "Have a good day",
-        "See ya", "Take care", "Bye bye"
+        "See ya", "Take care", "Bye bye", "That's all", "Till next time",
+        "I'm done", "End chat"
       ],
       "responses": [
         "Goodbye! Have a fantastic trip!",
         "Safe travels! Feel free to ask for more travel tips anytime!",
-        "Bye! Hope you have an amazing journey!"
+        "Bye! Hope you have an amazing journey!",
+        "Take care and enjoy your adventures!",
+        "Until next time! Happy traveling!"
       ]
     },
+
+    {
+      "tag": "help",
+      "patterns": [
+        "Help", "I need help", "What can you do", "How does this work",
+        "What should I ask", "What are my options", "How can you help me",
+        "Tell me what you can do", "Instructions please"
+      ],
+      "responses": [
+        "I'm your travel assistant! Here's what I can help with:\n• Information about cities (Paris, London, Tokyo, New York, Rome, Barcelona)\n• Landmarks and attractions\n• Local food recommendations\n• Weather and best times to visit\n• Transportation tips\n• Budget advice\nJust ask me anything about these topics!",
+        "I can provide travel information about several major cities. Try asking me about:\n• Attractions in Paris\n• Weather in Tokyo\n• Food to try in Barcelona\n• How to get around London\n• When to visit Rome\n• Budget for New York"
+      ]
+    },
+
     {
       "tag": "paris_landmarks",
       "patterns": [
         "What can I see in Paris", "Paris attractions", "Paris landmarks",
         "What to visit in Paris", "Tourist spots in Paris", "Paris monuments",
-        "Places to see in Paris", "Paris sightseeing"
+        "Places to see in Paris", "Paris sightseeing", "Paris highlights",
+        "Must see in Paris", "Popular spots in Paris", "Paris tourism"
       ],
       "responses": [
-        "Here are some must-see landmarks in Paris:\n* Eiffel Tower - Visit at sunset for the best views\n* Notre-Dame Cathedral - Historic Gothic masterpiece\n* Louvre Museum - Home to the Mona Lisa",
-        "Check out these Paris highlights:\n* Arc de Triomphe - Iconic monument with city views\n* Sacré-Cœur - Beautiful basilica in Montmartre\n* Palace of Versailles - Royal château and gardens",
-        "Don't miss these Paris attractions:\n* Musée d'Orsay - Impressionist art in former train station\n* Seine River - Take a scenic river cruise\n* Luxembourg Gardens - Perfect for a peaceful break"
+        "Here are some must-see landmarks in Paris:\n* Eiffel Tower - Visit at sunset for the best views\n* Notre-Dame Cathedral - Historic Gothic masterpiece\n* Louvre Museum - Home to the Mona Lisa\n* Montmartre - Charming artistic district with Sacré-Cœur Basilica\n* Arc de Triomphe - Iconic monument with city views",
+        "Check out these Paris highlights:\n* Arc de Triomphe - Iconic monument with city views\n* Sacré-Cœur - Beautiful basilica in Montmartre\n* Palace of Versailles - Royal château and gardens\n* Sainte-Chapelle - Stunning stained glass chapel\n* Champs-Élysées - Famous avenue for shopping",
+        "Don't miss these Paris attractions:\n* Musée d'Orsay - Impressionist art in former train station\n* Seine River - Take a scenic river cruise\n* Luxembourg Gardens - Perfect for a peaceful break\n* Centre Pompidou - Modern art museum with unique architecture\n* Palais Garnier - Opulent opera house"
       ]
     },
+
+    {
+      "tag": "paris_hidden_gems",
+      "patterns": [
+        "Paris hidden gems", "Paris secret spots", "Paris off the beaten path",
+        "Non-touristy Paris", "Paris local spots", "Paris unknown places",
+        "Unique places in Paris", "Paris local experience", "Paris like a local"
+      ],
+      "responses": [
+        "Discover these hidden gems in Paris:\n* Canal Saint-Martin - Trendy canal area with boutiques and cafes\n* Parc des Buttes-Chaumont - Beautiful park with rocky cliffs and a temple\n* Rue Crémieux - Colorful street perfect for photos\n* Musée de la Chasse et de la Nature - Quirky hunting museum\n* Passages Couverts - Historic covered shopping arcades",
+        "Experience Paris like a local at:\n* Le Marais - Hip neighborhood with great food and shopping\n* Belleville - Multicultural area with street art and panoramic views\n* Marché d'Aligre - Authentic local market\n* La Petite Ceinture - Abandoned railway track turned urban walkway\n* Les Arènes de Lutèce - Ancient Roman arena hidden in the Latin Quarter"
+      ]
+    },
+
     {
       "tag": "paris_food",
       "patterns": [
@@ -49,18 +83,20 @@
         "Must-try Paris foods:\n* French onion soup\n* Escargots in garlic butter\n* Macarons from patisseries"
       ]
     },
+
     {
-     "tag": "paris_weather",
+      "tag": "paris_weather",
       "patterns": [
-      "Weather in Paris", "Paris climate", "When to visit Paris",
-      "Best time Paris", "Paris seasons", "Paris temperature"
-    ],
+        "Weather in Paris", "Paris climate", "When to visit Paris",
+        "Best time Paris", "Paris seasons", "Paris temperature"
+      ],
       "responses": [
         "Paris weather overview:\n* Spring (March-May): Mild 8-19°C, perfect for sightseeing\n* Summer (June-August): Warm 15-25°C, busy season\n* Fall (September-November): Cool 11-21°C, fewer tourists",
         "Best times to visit Paris:\n* Spring for blooming gardens and mild weather\n* Fall for fewer crowds and pleasant temperatures\n* Winter for festive atmosphere and shorter lines",
         "Paris seasonal highlights:\n* April-May for perfect walking weather\n* September-October for harvest season and wine\n* December for holiday decorations and markets"
       ]
     },
+
     {
       "tag": "london_landmarks",
       "patterns": [
@@ -73,6 +109,20 @@
         "Popular London sites:\n* London Eye - Best city views\n* St. Paul's Cathedral - Stunning architecture\n* Hyde Park - Royal gardens"
       ]
     },
+
+    {
+      "tag": "london_hidden_gems",
+      "patterns": [
+        "London hidden gems", "London secret spots", "London off the beaten path",
+        "Non-touristy London", "London local spots", "London unknown places",
+        "Unique places in London", "London local experience", "London like a local"
+      ],
+      "responses": [
+        "Discover these hidden gems in London:\n* Neal's Yard - Colorful courtyard with cafes and shops in Covent Garden\n* Sir John Soane's Museum - Eccentric historic house museum\n* Little Venice - Charming canal area with narrowboats and waterside cafes\n* Leake Street Tunnel - Underground graffiti gallery\n* Postman's Park - Peaceful memorial garden with heroic tales",
+        "Experience London like a local at:\n* Columbia Road Flower Market - Sunday market with vibrant atmosphere\n* Maltby Street Market - Food market with local specialties\n* Gordon's Wine Bar - London's oldest wine bar in candlelit cellars\n* Hampstead Heath - Wild parkland with spectacular city views\n* God's Own Junkyard - Neon art wonderland in Walthamstow"
+      ]
+    },
+
     {
       "tag": "london_food",
       "patterns": [
@@ -85,6 +135,7 @@
         "London food highlights:\n* Traditional meat pies\n* Fresh oysters at seafood bars\n* Street food at Camden Market"
       ]
     },
+
     {
       "tag": "london_weather",
       "patterns": [
@@ -97,6 +148,7 @@
         "London weather tips:\n* Pack a light raincoat - weather changes quickly\n* Visit indoor attractions in winter months\n* Summer has longest daylight hours"
       ]
     },
+
     {
       "tag": "tokyo_landmarks",
       "patterns": [
@@ -109,6 +161,20 @@
         "Must-visit Tokyo areas:\n* Akihabara - Electronics and anime\n* Harajuku - Fashion and culture\n* Tsukiji Outer Market - Famous fish market"
       ]
     },
+
+    {
+      "tag": "tokyo_hidden_gems",
+      "patterns": [
+        "Tokyo hidden gems", "Tokyo secret spots", "Tokyo off the beaten path",
+        "Non-touristy Tokyo", "Tokyo local spots", "Tokyo unknown places",
+        "Unique places in Tokyo", "Tokyo local experience", "Tokyo like a local"
+      ],
+      "responses": [
+        "Discover these hidden gems in Tokyo:\n* Yanaka Ginza - Traditional shopping street with old Tokyo atmosphere\n* Shimokitazawa - Hip neighborhood with vintage shops and cafes\n* Todoroki Valley - Serene ravine with lush greenery in the city\n* Nezu Museum - Beautiful Japanese garden and art collection\n* Kagurazaka - Former geisha district with French influence",
+        "Experience Tokyo like a local at:\n* Sangenjaya - Relaxed neighborhood with izakayas and small bars\n* Koenji - Alternative area with live music and thrift stores\n* Nakameguro - Trendy canal-side district with boutiques\n* Yoyogi Park on Sunday - See rockabilly dancers and street performances\n* Golden Gai - Tiny atmospheric bars in Shinjuku"
+      ]
+    },
+
     {
       "tag": "tokyo_food",
       "patterns": [
@@ -121,7 +187,8 @@
         "Popular Tokyo dishes:\n* Authentic tonkatsu\n* Fresh sashimi\n* Matcha desserts"
       ]
     },
-        {
+
+    {
       "tag": "tokyo_weather",
       "patterns": [
         "Weather in Tokyo", "Tokyo climate", "When to visit Tokyo",
@@ -133,6 +200,110 @@
         "Tokyo weather tips:\n* Avoid rainy season (June-July)\n* Spring and fall are most comfortable\n* Summer can be very humid"
       ]
     },
+
+    {
+      "tag": "rome_landmarks",
+      "patterns": [
+        "What can I see in Rome", "Rome attractions", "Rome landmarks",
+        "What to visit in Rome", "Tourist spots in Rome", "Rome monuments",
+        "Places to see in Rome", "Rome sightseeing", "Ancient Rome sites"
+      ],
+      "responses": [
+        "Must-see landmarks in Rome:\n* Colosseum - Iconic ancient amphitheater\n* Roman Forum - Heart of ancient Rome\n* Vatican Museums & Sistine Chapel - Michelangelo's masterpiece\n* St. Peter's Basilica - Magnificent papal basilica\n* Pantheon - Best-preserved ancient Roman building",
+        "Don't miss these Rome attractions:\n* Trevi Fountain - Famous baroque fountain\n* Spanish Steps - Elegant staircase connecting Piazza di Spagna and Trinità dei Monti church\n* Palatine Hill - Birthplace of Rome with imperial palaces\n* Borghese Gallery - Outstanding art collection in beautiful villa\n* Castel Sant'Angelo - Towering cylindrical building along the Tiber"
+      ]
+    },
+
+    {
+      "tag": "rome_hidden_gems",
+      "patterns": [
+        "Rome hidden gems", "Rome secret spots", "Rome off the beaten path",
+        "Non-touristy Rome", "Rome local spots", "Rome unknown places",
+        "Unique places in Rome", "Rome local experience", "Rome like a local"
+      ],
+      "responses": [
+        "Discover these hidden gems in Rome:\n* Quartiere Coppedè - Whimsical architectural district\n* Aventine Keyhole - Unique view of St. Peter's through a keyhole\n* Palazzo Spada's Forced Perspective Gallery - Optical illusion by Borromini\n* Protestant Cemetery - Peaceful resting place of Keats and Shelley\n* Centrale Montemartini - Ancient Roman statues displayed in former power plant",
+        "Experience Rome like a local at:\n* Testaccio - Authentic neighborhood with great food market\n* Trastevere - Charming area with cobblestone streets and trattorias\n* Appian Way - Ancient Roman road perfect for Sunday walks\n* Quartiere Monti - Hip district with boutiques and wine bars\n* Giardino degli Aranci - Orange garden with panoramic views"
+      ]
+    },
+
+    {
+      "tag": "rome_food",
+      "patterns": [
+        "What to eat in Rome", "Rome food recommendations", "Italian cuisine in Rome",
+        "Best restaurants Rome", "Traditional Roman food", "Rome dining",
+        "Must try food Rome", "Rome pasta dishes", "Famous food in Rome"
+      ],
+      "responses": [
+        "Must-try Roman dishes:\n* Carbonara - Pasta with eggs, cheese, pepper, and guanciale\n* Cacio e Pepe - Simple yet delicious pasta with cheese and pepper\n* Supplì - Fried rice balls with tomato sauce and mozzarella\n* Roman-style Pizza - Thin, crispy crust served in squares\n* Saltimbocca alla Romana - Veal with prosciutto and sage",
+        "Roman food specialties:\n* Artichokes (Carciofi alla Romana/alla Giudia) - Braised or fried artichokes\n* Trippa alla Romana - Tripe in tomato sauce\n* Porchetta - Herb-stuffed roast pork\n* Coda alla Vaccinara - Oxtail stew\n* Maritozzo - Sweet bun filled with whipped cream"
+      ]
+    },
+
+    {
+      "tag": "rome_weather",
+      "patterns": [
+        "Weather in Rome", "Rome climate", "When to visit Rome",
+        "Best time Rome", "Rome seasons", "Rome temperature"
+      ],
+      "responses": [
+        "Rome weather overview:\n* Spring (March-May): Pleasant 10-20°C, beautiful blooms\n* Summer (June-August): Hot 25-35°C, crowded but lively\n* Fall (September-November): Mild 15-25°C, fewer tourists\n* Winter (December-February): Cool 5-12°C, occasional rain",
+        "Best times to visit Rome:\n* April-May for perfect weather and fewer crowds\n* September-October for pleasant temperatures and harvest season\n* Early December for festivities without peak holiday crowds",
+        "Rome weather tips:\n* Summer can be very hot - visit sites early in the morning\n* Always carry water during summer months\n* Winter offers cheaper accommodations and shorter lines\n* Pack layers for spring and fall as temperatures vary throughout the day"
+      ]
+    },
+
+    {
+      "tag": "barcelona_landmarks",
+      "patterns": [
+        "What can I see in Barcelona", "Barcelona attractions", "Barcelona landmarks",
+        "What to visit in Barcelona", "Tourist spots in Barcelona", "Barcelona monuments",
+        "Places to see in Barcelona", "Barcelona sightseeing", "Gaudi Barcelona"
+      ],
+      "responses": [
+        "Barcelona's top attractions:\n* Sagrada Família - Gaudí's unfinished masterpiece\n* Park Güell - Whimsical park with Gaudí's colorful designs\n* Casa Batlló - Modernist building with unique facade\n* La Rambla - Famous pedestrian street with shops and cafes\n* Gothic Quarter - Historic center with narrow medieval streets",
+        "Don't miss these Barcelona highlights:\n* Casa Milà (La Pedrera) - Another Gaudí architectural wonder\n* Montjuïc - Hill with museums, gardens, and Olympic facilities\n* Barcelona Cathedral - Gothic cathedral in the heart of the city\n* Barceloneta Beach - Popular urban beach with seafood restaurants\n* Palau de la Música Catalana - Stunning modernist concert hall"
+      ]
+    },
+
+    {
+      "tag": "barcelona_hidden_gems",
+      "patterns": [
+        "Barcelona hidden gems", "Barcelona secret spots", "Barcelona off the beaten path",
+        "Non-touristy Barcelona", "Barcelona local spots", "Barcelona unknown places",
+        "Unique places in Barcelona", "Barcelona local experience", "Barcelona like a local"
+      ],
+      "responses": [
+        "Discover these hidden gems in Barcelona:\n* Bunkers del Carmel - Panoramic viewpoint with sunset views\n* Horta Labyrinth - Historic garden maze\n* Sant Pau Recinte Modernista - Art Nouveau hospital complex\n* Tibidabo Amusement Park - Vintage amusement park with city views\n* Palau Güell - Less crowded Gaudí masterpiece",
+        "Experience Barcelona like a local at:\n* El Born - Trendy neighborhood with tapas bars and boutiques\n* Gràcia - Bohemian district with independent shops and plazas\n* Poblenou - Former industrial area turned creative neighborhood\n* Mercat de Sant Antoni - Renovated local market\n* Parc de la Ciutadella - Beautiful park with rowboats and palaces"
+      ]
+    },
+
+    {
+      "tag": "barcelona_food",
+      "patterns": [
+        "What to eat in Barcelona", "Barcelona food recommendations", "Catalan cuisine",
+        "Best restaurants Barcelona", "Traditional Spanish food Barcelona", "Barcelona dining"
+      ],
+      "responses": [
+        "Must-try Barcelona foods:\n* Paella - Though originally from Valencia, delicious in Barcelona\n* Tapas - Small plates perfect for sharing\n* Bombas - Potato croquettes with spicy sauce\n* Pa amb tomàquet - Bread rubbed with tomato, oil and salt\n* Crema Catalana - Catalan custard dessert",
+        "Barcelona culinary experiences:\n* La Boqueria Market - Famous food market on La Rambla\n* Pintxos bars in El Born - Basque-style tapas on bread\n* Seafood at Barceloneta - Fresh Mediterranean cuisine\n* Vermouth in traditional bodegas\n* Chocolate con churros for breakfast"
+      ]
+    },
+
+    {
+      "tag": "barcelona_weather",
+      "patterns": [
+        "Weather in Barcelona", "Barcelona climate", "When to visit Barcelona",
+        "Best time Barcelona", "Barcelona seasons", "Barcelona temperature"
+      ],
+      "responses": [
+        "Barcelona weather overview:\n* Spring (March-May): Mild 15-22°C, perfect for sightseeing\n* Summer (June-August): Hot 25-30°C, beach weather\n* Fall (September-November): Pleasant 17-25°C, fewer tourists\n* Winter (December-February): Cool 10-15°C, occasional rain",
+        "Best times to visit Barcelona:\n* May-June for perfect weather before peak crowds\n* September for warm temperatures and local festivals\n* April and October for fewer tourists and pleasant climate",
+        "Barcelona weather tips:\n* Summer is perfect for beach time but very crowded\n* Winter offers mild temperatures compared to northern Europe\n* Spring brings blooming parks and comfortable walking weather\n* Fall has beautiful colors and harvest festivals"
+      ]
+    },
+
     {
       "tag": "general_transportation",
       "patterns": [
@@ -144,6 +315,7 @@
         "Getting around advice:\n* Take buses for scenic routes\n* Walk in city centers\n* Use taxis late at night"
       ]
     },
+
     {
       "tag": "travel_costs",
       "patterns": [
@@ -153,6 +325,56 @@
       "responses": [
         "Daily budget guidelines:\n* Budget: $70-100 (hostels, street food)\n* Mid-range: $150-200 (hotels, restaurants)\n* Luxury: $300+ (high-end accommodations)",
         "Money-saving tips:\n* Book accommodations early\n* Use public transportation\n* Get city attraction passes"
+      ]
+    },
+
+    {
+      "tag": "disambiguate_city",
+      "patterns": [
+        "Which city", "Best city", "Compare cities", "City recommendation",
+        "Paris or London", "Tokyo or London", "Rome or Barcelona",
+        "Better city", "Favorite city", "City advice"
+      ],
+      "responses": [
+        "I'd be happy to compare cities for you! Each has its unique charm. Which aspects are most important to you? Art and culture, food, architecture, or perhaps budget?",
+        "All our featured cities are amazing in different ways! To give you the best recommendation, could you tell me what you're looking for in a destination? Culture, nightlife, food, or family-friendly activities?",
+        "Great question! To help you choose between cities, I'd need to know more about your interests. Are you more interested in historical sites, modern attractions, or perhaps culinary experiences?"
+      ]
+    },
+
+    {
+      "tag": "budget_inquiry",
+      "patterns": [
+        "How expensive is", "Budget for", "Trip cost", "How much money",
+        "Affordable options", "Save money in", "Cost of visiting",
+        "Cheap travel", "Budget travel", "Expensive city"
+      ],
+      "responses": [
+        "Thinking about your budget is important! Different cities have different costs. For example:\n* Paris and London tend to be more expensive (€150-200/day)\n* Barcelona and Rome are moderately priced (€100-150/day)\n* Best budget options: Free museum days, city passes, and eating where locals eat\n\nWould you like specific budget tips for a particular city?",
+        "Here's a general budget breakdown:\n* Budget travelers: €70-100/day (hostels, street food, public transport)\n* Mid-range: €150-200/day (hotels, restaurants, some attractions)\n* Luxury: €300+/day (high-end hotels, dining, experiences)\n\nWhich city are you planning to visit? I can give you more specific advice."
+      ]
+    },
+
+    {
+      "tag": "fallback",
+      "patterns": [],
+      "responses": [
+        "I'm not entirely sure what you're asking. I can help with information about Paris, London, Tokyo, New York, Rome, and Barcelona. Would you like to know about landmarks, food, weather, or transportation in any of these cities?",
+        "I don't have enough information to answer that properly. I specialize in travel information for major cities like Paris, London, and Tokyo. Could you rephrase your question?",
+        "I might not have understood your question correctly. I can provide travel tips, city information, and recommendations for several major cities. How can I help you plan your trip?"
+      ]
+    },
+
+    {
+      "tag": "continue_conversation",
+      "patterns": [
+        "Tell me more", "More information", "Go on", "And then?",
+        "What else", "Additional information", "Continue", "Next"
+      ],
+      "responses": [
+        "What aspect would you like to know more about? I can tell you about attractions, food, transportation, or cultural tips.",
+        "I'd be happy to share more! Would you like more details about landmarks, local cuisine, or perhaps some off-the-beaten-path recommendations?",
+        "Sure thing! Would you like me to focus on budget options, luxury experiences, or family-friendly activities?"
       ]
     }
   ]

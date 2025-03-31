@@ -2,18 +2,47 @@ import torch
 import json
 import numpy as np
 import matplotlib.pyplot as plt
-from nltk_utils import tokenize, stem, bag_of_words
+from nltk_utils import tokenize, stem, bag_of_words, get_sentence_embedding, load_embeddings
 from torch.utils.data import Dataset, DataLoader
 from model import EnhancedNeuralNet
 import torch.nn as nn
 import time
-from train import EmbeddingDataset
+import os
+
+
+# Define EmbeddingDataset class here instead of importing from train
+class EmbeddingDataset(Dataset):
+    def __init__(self, sentences, labels):
+        self.sentences = sentences
+        self.labels = labels
+
+        # Ensure inputs are numpy arrays
+        if not isinstance(self.sentences, np.ndarray):
+            self.sentences = np.array(self.sentences)
+        if not isinstance(self.labels, np.ndarray):
+            self.labels = np.array(self.labels, dtype=np.int64)
+
+    def __len__(self):
+        return len(self.labels)
+
+    def __getitem__(self, idx):
+        # Return embeddings as float32, labels as long (integer)
+        return torch.tensor(self.sentences[idx], dtype=torch.float32), torch.tensor(self.labels[idx], dtype=torch.long)
 
 
 def experiment_architectures(intents_file='intents.json'):
-    # Load and process data
-    with open(intents_file, 'r') as f:
-        intents = json.load(f)
+    # Check if intents file exists
+    if not os.path.exists(intents_file):
+        raise FileNotFoundError(f"Intents file '{intents_file}' not found. Please make sure it exists.")
+
+    # Load intents
+    try:
+        with open(intents_file, 'r') as f:
+            intents = json.load(f)
+    except json.JSONDecodeError:
+        raise ValueError(f"Invalid JSON format in '{intents_file}'. Please check the file.")
+    except Exception as e:
+        raise Exception(f"Error loading intents file: {str(e)}")
 
     # Process all words and tags
     all_words = []
@@ -46,10 +75,11 @@ def experiment_architectures(intents_file='intents.json'):
 
     # Create configurations to test
     configurations = [
-        {"name": "Original", "hidden_size": 8, "dropout": 0.0, "leaky": False},
+        {"name": "Baseline", "hidden_size": 8, "dropout": 0.0, "leaky": False},
         {"name": "Larger Hidden", "hidden_size": 64, "dropout": 0.0, "leaky": False},
         {"name": "With Dropout", "hidden_size": 64, "dropout": 0.2, "leaky": False},
         {"name": "With LeakyReLU", "hidden_size": 64, "dropout": 0.0, "leaky": True},
+        {"name": "Medium with Regularization", "hidden_size": 32, "dropout": 0.2, "leaky": True},
         {"name": "Full Improved", "hidden_size": 64, "dropout": 0.2, "leaky": True}
     ]
 
@@ -75,7 +105,9 @@ def experiment_architectures(intents_file='intents.json'):
 
         # Model initialization
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        model = EnhancedNeuralNet(input_size, hidden_size, output_size, dropout_rate).to(device)
+        model = EnhancedNeuralNet(input_size=input_size, hidden_size=hidden_size,
+                                  num_classes=output_size, embedding_dim=input_size,
+                                  dropout_rate=dropout_rate).to(device)
 
         # If we're not using leaky ReLU, replace it with regular ReLU
         if not config['leaky']:
@@ -143,6 +175,11 @@ def experiment_architectures(intents_file='intents.json'):
 
         # Save the best model (full improved)
         if config['name'] == "Full Improved":
+            # Create directory for model if it doesn't exist
+            model_dir = os.path.dirname("enhanced_model_weights.pth")
+            if model_dir and not os.path.exists(model_dir):
+                os.makedirs(model_dir)
+
             torch.save(model.state_dict(), "enhanced_model_weights.pth")
             model_data = {
                 "input_size": input_size,

@@ -93,27 +93,26 @@ def stem(word):
 
 
 def correct_spelling(sentence):
-    """Correct spelling mistakes in the input sentence"""
-    # Add travel terms to the spell checker's dictionary
     for term in travel_terms:
         spell.word_frequency.load_words([term])
 
-    # First, check for custom travel-specific corrections
     lower_sentence = sentence.lower()
     for misspelled, correct in custom_corrections.items():
-        lower_sentence = lower_sentence.replace(misspelled, correct)
+        lower_sentence = lower_sentence.replace\
+            (misspelled, correct)
 
     words = tokenize(lower_sentence)
     corrected_words = []
 
     for word in words:
-        # Only try to correct words that might be misspelled
-        if word.isalpha() and (word_vectors is None or word not in word_vectors) and word not in stopwords.words('english'):
+        if word.isalpha() and (word_vectors is None or
+                               word not in word_vectors)\
+                and word not in stopwords.words('english'):
             corrected = spell.correction(word)
-            corrected_words.append(corrected if corrected else word)
+            corrected_words.append(corrected if corrected
+                                   else word)
         else:
             corrected_words.append(word)
-
     return ' '.join(corrected_words)
 
 
@@ -148,13 +147,17 @@ def extract_entities(sentence):
 
     # Check for cities
     for city in cities:
-        if re.search(r'\b' + city + r'\b', sentence, re.IGNORECASE):
-            if city.lower() not in [loc.lower() for loc in entities['locations']]:
+        if re.search(r'\b' + city + r'\b', sentence,
+                     re.IGNORECASE):
+            if city.lower() not in [loc.lower() for
+                                    loc in entities['locations']]:
                 entities['locations'].append(city)
 
     # Check for landmarks
     for landmark, city in landmarks.items():
-        if re.search(r'\b' + landmark.replace(' ', r'\s+') + r'\b', sentence, re.IGNORECASE):
+        if re.search(r'\b' + landmark.replace
+            (' ', r'\s+') + r'\b',
+                     sentence, re.IGNORECASE):
             entities['landmarks'].append(landmark)
             # Add the associated city if not already there
             if city not in entities['locations']:
@@ -162,7 +165,7 @@ def extract_entities(sentence):
 
     # Pattern matching for dates
     date_patterns = [
-        r'\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2}(?:st|nd|rd|th)?\b',
+        r'\b(?:Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+\d{1,2}(?:st|nd|rd|th)?(?:,?\s+\d{4})?\b',
         r'\b\d{1,2}/\d{1,2}/\d{2,4}\b',
         r'\b\d{1,2}-\d{1,2}-\d{2,4}\b',
         r'\b(?:next|this|coming|last)\s+(?:week|month|year|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\b'

@@ -7,7 +7,8 @@ import numpy as np
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 
 
-def test_model(model_weights='model_weights.pth', model_data='model_data.json', intents_file='intents.json'):
+def test_model(model_weights='enhanced_model_weights.pth', model_data='enhanced_model_data.json',
+               intents_file='intents.json'):
     # Load model data
     with open(model_data, 'r') as f:
         model_data = json.load(f)
@@ -18,12 +19,15 @@ def test_model(model_weights='model_weights.pth', model_data='model_data.json', 
 
     # Setup model
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-    input_size = model_data['input_size']
     hidden_size = model_data['hidden_size']
     output_size = model_data['output_size']
-    all_words = model_data['all_words']
+    all_words = model_data.get('all_words', [])  # Handle case where all_words is not in model_data
     tags = model_data['tags']
     dropout_rate = model_data.get('dropout_rate', 0.2)
+    embedding_dim = model_data.get('embedding_dim', 100)
+
+    # If there's no input_size in model_data, use embedding_dim as input
+    input_size = model_data.get('input_size', embedding_dim)
 
     # Initialize model
     model = EnhancedNeuralNet(input_size, hidden_size, output_size, dropout_rate).to(device)
@@ -37,14 +41,22 @@ def test_model(model_weights='model_weights.pth', model_data='model_data.json', 
 
     for intent in intents['intents']:
         tag = intent['tag']
-        tag_idx = tags.index(tag)
+        if tag in tags:
+            tag_idx = tags.index(tag)
 
-        for pattern in intent['patterns']:
-            tokenized_pattern = tokenize(pattern)
-            bag = bag_of_words(tokenized_pattern, all_words)
-            X_test.append(bag)
-            y_test.append(tag_idx)
-            original_text.append(pattern)
+            for pattern in intent['patterns']:
+                tokenized_pattern = tokenize(pattern)
+                # Check if all_words exists in model_data
+                if all_words:
+                    bag = bag_of_words(tokenized_pattern, all_words)
+                    X_test.append(bag)
+                else:
+                    # If no all_words, just use tokenized pattern
+                    # This assumes the model is using embeddings
+                    X_test.append(tokenized_pattern)
+
+                y_test.append(tag_idx)
+                original_text.append(pattern)
 
     X_test = np.array(X_test)
     y_test = np.array(y_test)
@@ -110,13 +122,6 @@ def test_model(model_weights='model_weights.pth', model_data='model_data.json', 
 
 
 if __name__ == '__main__':
-    # Test original model
-    print("Testing original model:")
-    test_model()
-
-    # Test improved model (if it exists)
-    try:
-        print("\nTesting improved model:")
-        test_model('enhanced_model_weights.pth', 'enhanced_model_data.json')
-    except FileNotFoundError:
-        print("\nEnhanced model not found. Please train it first.")
+    # Test enhanced model
+    print("\nTesting enhanced model:")
+    test_model('enhanced_model_weights.pth', 'enhanced_model_data.json')

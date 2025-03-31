@@ -70,12 +70,12 @@ def experiment_architectures(intents_file='intents.json'):
         dropout_rate = config['dropout']
 
         # Create dataset and dataloader
-        dataset = ChatDataset(x_train, y_train)
+        dataset = EmbeddingDataset(x_train, y_train)
         train_loader = DataLoader(dataset=dataset, batch_size=batch_size, shuffle=True, num_workers=0)
 
         # Model initialization
         device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-        model = NeuralNet(input_size, hidden_size, output_size, dropout_rate).to(device)
+        model = EnhancedNeuralNet(input_size, hidden_size, output_size, dropout_rate).to(device)
 
         # If we're not using leaky ReLU, replace it with regular ReLU
         if not config['leaky']:

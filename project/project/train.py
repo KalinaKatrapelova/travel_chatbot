@@ -150,8 +150,8 @@ def train_enhanced_chatbot(intents_file='intents.json',
                     with torch.no_grad():
                         # Test on a few examples
                         test_sentences = [
-                            "What can I see in Paris?",
-                            "Tell me about London weather",
+                            "What can I see in London?",
+                            "Tell me about Paris weather",
                             "What food should I try in Tokyo?"
                         ]
 

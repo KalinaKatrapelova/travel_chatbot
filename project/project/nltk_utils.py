@@ -74,7 +74,17 @@ def load_embeddings(embedding_type='glove-wiki-gigaword-100'):
 
 def tokenize(sentence):
     """Tokenize a sentence into words"""
-    return word_tokenize(sentence.lower())
+    # Check if sentence is already a list of tokens
+    if isinstance(sentence, list):
+        # If it's already a list of tokens, return as is or process each token
+        return [token.lower() if isinstance(token, str) else token for token in sentence]
+    # If it's a string, tokenize it
+    elif isinstance(sentence, str):
+        return word_tokenize(sentence.lower())
+    # If it's neither, return an empty list
+    else:
+        print(f"Warning: tokenize() received unexpected type {type(sentence)}")
+        return []
 
 
 def stem(word):

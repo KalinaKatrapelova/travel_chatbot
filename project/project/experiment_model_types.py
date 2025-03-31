@@ -4,10 +4,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from nltk_utils import tokenize, stem, bag_of_words
 from torch.utils.data import Dataset, DataLoader
-from model import NeuralNet
+from model import EnhancedNeuralNet
 import torch.nn as nn
 import time
-from train import ChatDataset
+from train import EmbeddingDataset
 
 
 def experiment_architectures(intents_file='intents.json'):

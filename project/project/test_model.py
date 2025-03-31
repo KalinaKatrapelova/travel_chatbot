@@ -1,6 +1,6 @@
 import torch
 import json
-from model import NeuralNet
+from model import EnhancedNeuralNet
 from nltk_utils import bag_of_words, tokenize
 import matplotlib.pyplot as plt
 import numpy as np
@@ -26,7 +26,7 @@ def test_model(model_weights='model_weights.pth', model_data='model_data.json', 
     dropout_rate = model_data.get('dropout_rate', 0.2)
 
     # Initialize model
-    model = NeuralNet(input_size, hidden_size, output_size, dropout_rate).to(device)
+    model = EnhancedNeuralNet(input_size, hidden_size, output_size, dropout_rate).to(device)
     model.load_state_dict(torch.load(model_weights, map_location=device, weights_only=True))
     model.eval()
 
